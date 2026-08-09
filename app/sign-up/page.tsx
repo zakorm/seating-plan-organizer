@@ -1,9 +1,7 @@
 "use client";
 import React, { useState } from 'react';
-import { searchUser } from './actions';
+import { addUser } from './actions';
 import Link from 'next/link';
-
-
 
 export default function Home() {
     
@@ -37,7 +35,7 @@ export default function Home() {
       <p className="leading-20"><br/></p>
 
       <button
-        onClick={() => searchUser}
+        onClick={() => addUser}
         className="bg-[#beeba2] rounded-full text-3xl w-40 h-15 text-center"
       >
         <Link href="dashboard">
@@ -48,5 +46,5 @@ export default function Home() {
 
         
     </>
-    );
-  }
+  );
+}
