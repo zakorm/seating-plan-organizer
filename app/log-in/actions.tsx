@@ -10,10 +10,11 @@ export async function loginUser(formData: FormData) {
   const users = db.collection("users");
   const ppl = await users.findOne({ username: formData.get("username"), password: formData.get("password")});
   const cookieStore = await cookies();
-  if (ppl) {
-    if (typeof username == "string") {
-      cookieStore.set("username", username, { httpOnly: true });
-    }
-    redirect("/dashboard");
+  if (!ppl) {
+    return {message: "incorrect password or username"};
   }
+  if (typeof username == "string") {
+    cookieStore.set("username", username, { httpOnly: true });
+  }
+  redirect("/dashboard");
 }

@@ -10,7 +10,7 @@ export async function addUser(formData: FormData) {
   const users = db.collection("users");
   const existing = await users.findOne({ username:  username});
   if (existing) {
-    return;
+    return {message: "username already exists!"};
   }
   await users.insertOne({
     username: username,
@@ -19,8 +19,8 @@ export async function addUser(formData: FormData) {
   const cookieStore = await cookies();
   if (typeof username == "string") {
     cookieStore.set("username", username, { httpOnly: true });
-    redirect("/dashboard");
   }
+  redirect("/dashboard");
 
   
 }

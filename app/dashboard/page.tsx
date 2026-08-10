@@ -12,9 +12,6 @@ export default async function Home() {
     <>
       <h1 className="leading-40">Hello, {username}</h1>
 
-      
-          
-
         
     </>
   );

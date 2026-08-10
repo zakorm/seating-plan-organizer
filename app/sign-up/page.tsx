@@ -4,14 +4,18 @@ import { addUser } from './actions';
 import Link from 'next/link';
 
 export default function Home() {
-    
+  const [status, setStatus] = useState("")
   const [user, setUser] = useState({
     username:  "",
     password: "",
   });
+  async function addUserClient(formData: FormData) {
+    const result = await addUser(formData);
+    setStatus(result.message);
+  }
   return (
     <>
-      <form action={addUser}>
+      <form action={addUserClient}>
         <p className="leading-20"><br/></p>
         <h4>Username:</h4>
         <input         
@@ -43,7 +47,7 @@ export default function Home() {
         </button>
       </form>
 
-
+      <h3 className="leading-30 text-red-500">{status}</h3>
         
     </>
   );

@@ -10,12 +10,16 @@ export default function Home() {
     username:  "",
     password: "",
   });
+  const [status, setStatus] = useState("");
   
-
+  async function loginUserClient(formData: FormData) {
+    const result = await loginUser(formData);
+    setStatus(result.message);
+  }
 
   return (
     <>
-      <form action={loginUser}>
+      <form action={loginUserClient}>
         <p className="leading-20"><br/></p>
         <h4>Username:</h4>
         <input         
@@ -46,6 +50,9 @@ export default function Home() {
         <h2>Log In</h2>
         </button>
       </form>
+
+      <h3 className="leading-30 text-red-500">{status}</h3>
+      
     </>
     );
   }
