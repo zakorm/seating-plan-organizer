@@ -1,19 +1,18 @@
 import Link from 'next/link';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-export default function Home() {
+export default async function Home() {
+  const cookieStore = await cookies();
+  const username = cookieStore.get('username')?.value;
+  if (!username) {
+    redirect('/log-in');
+  }
   return (
     <>
-      <p className="leading-20"><br/></p>
-      <h4>Username:</h4>
+      <h1 className="leading-40">Hello, {username}</h1>
 
-      <p className="leading-20"><br/></p>
-
-      <h4>Password:</h4>
-
-      <p className="leading-20"><br/></p>
-      <Link href="a">
-        <h2>Sign Up</h2>
-      </Link>
+      
           
 
         

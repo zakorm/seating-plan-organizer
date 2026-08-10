@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { loginUser } from './actions';
-import Link from 'next/link';
 
 
 
@@ -31,7 +30,7 @@ export default function Home() {
 
         <h4>Password:</h4>
         <input         
-          type="text"
+          type="password"
           value={user.password}
           onChange={(e) => setUser({...user, password: e.target.value})}
           className="bg-[#ffffff] rounded-full text-3xl w-64 h-10 text-center"
