@@ -1,26 +1,26 @@
-"use server";
+'use server';
 import { redirect } from 'next/navigation';
-import { getDb } from "@/lib/mongodb";
-import { cookies } from "next/headers";
+import { getDb } from '@/lib/mongodb';
+import { cookies } from 'next/headers';
 
 
 export async function addUser(formData: FormData) {
-  const username = formData.get("username");
+  const username = formData.get('username');
   const db = await getDb();
-  const users = db.collection("users");
+  const users = db.collection('users');
   const existing = await users.findOne({ username:  username});
   if (existing) {
-    return {message: "username already exists!"};
+    return {message: 'username already exists!'};
   }
   await users.insertOne({
     username: username,
-    password: formData.get("password"),
+    password: formData.get('password'),
   });
   const cookieStore = await cookies();
-  if (typeof username == "string") {
-    cookieStore.set("username", username, { httpOnly: true });
+  if (typeof username == 'string') {
+    cookieStore.set('username', username, { httpOnly: true });
   }
-  redirect("/dashboard");
+  redirect('/dashboard');
 
   
 }

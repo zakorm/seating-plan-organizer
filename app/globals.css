@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
 
 
 
 
 @theme {
-  --font-Quicksand: "Quicksand", sans-serif; 
+  --font-Quicksand: 'Quicksand', sans-serif; 
 }
 
 body {

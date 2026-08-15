@@ -10,7 +10,7 @@ export default async function Home() {
   }
   return (
     <>
-      <h1 className="leading-40">Hello, {username}</h1>
+      <h1 className='leading-40'>Hello, {username}</h1>
 
         
     </>
